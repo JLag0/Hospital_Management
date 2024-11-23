@@ -136,6 +136,8 @@
             this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.loginPicturebox);
             this.Controls.Add(this.loginPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.LoginForm_Load);
@@ -144,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.loginPicturebox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

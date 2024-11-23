@@ -26,8 +26,6 @@ namespace Hospital_Management
 
             // Show the Patients form
             patientsForm.Show();
-
-            
         }
 
         private void doctorBtn_Click(object sender, EventArgs e)
@@ -35,6 +33,13 @@ namespace Hospital_Management
             // Show the Doctors form
             Doctors doctorsForm = new Doctors();
             doctorsForm.Show();
+        }
+
+        private void nurseBtn_Click(object sender, EventArgs e)
+        {
+            // Show the Nurses form
+            Nurses NursesForm = new Nurses();
+            NursesForm.Show();
         }
     }
 }
