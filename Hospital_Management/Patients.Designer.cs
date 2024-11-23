@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patients));
             this.topPnl = new System.Windows.Forms.Panel();
             this.labelPatient = new System.Windows.Forms.Label();
             this.patientIDLbl = new System.Windows.Forms.Label();
@@ -223,6 +224,8 @@
             this.Controls.Add(this.patientIDtb);
             this.Controls.Add(this.patientIDLbl);
             this.Controls.Add(this.topPnl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Patients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patients";

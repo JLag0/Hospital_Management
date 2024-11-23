@@ -131,6 +131,7 @@
             this.nurseBtn.TabIndex = 3;
             this.nurseBtn.Text = "Nurse";
             this.nurseBtn.UseVisualStyleBackColor = true;
+            this.nurseBtn.Click += new System.EventHandler(this.nurseBtn_Click);
             // 
             // doctorBtn
             // 
@@ -174,6 +175,7 @@
             this.ClientSize = new System.Drawing.Size(830, 551);
             this.Controls.Add(this.leftPnl);
             this.Controls.Add(this.topPnl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Main";
             this.topPnl.ResumeLayout(false);

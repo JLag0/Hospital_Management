@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Doctors));
             this.topPnl = new System.Windows.Forms.Panel();
             this.labelDoctors = new System.Windows.Forms.Label();
             this.doctorIdTb = new System.Windows.Forms.TextBox();
@@ -199,7 +200,6 @@
             this.docGridView.Name = "docGridView";
             this.docGridView.Size = new System.Drawing.Size(577, 150);
             this.docGridView.TabIndex = 18;
-            this.Load += new System.EventHandler(this.Doctors_Load);
             // 
             // Doctors
             // 
@@ -222,8 +222,11 @@
             this.Controls.Add(this.doctorIdTb);
             this.Controls.Add(this.doctorIDLbl);
             this.Controls.Add(this.topPnl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Doctors";
             this.Text = "Doctors";
+            this.Load += new System.EventHandler(this.Doctors_Load);
             this.topPnl.ResumeLayout(false);
             this.topPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.docGridView)).EndInit();
