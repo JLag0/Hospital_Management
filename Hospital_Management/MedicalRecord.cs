@@ -16,5 +16,17 @@ namespace Hospital_Management
         {
             InitializeComponent();
         }
+
+
+
+
+
+
+
+
+        private void MedicalRecord_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

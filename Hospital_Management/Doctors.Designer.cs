@@ -161,13 +161,14 @@
             // 
             // deleteDocBtn
             // 
+            this.deleteDocBtn.BackColor = System.Drawing.Color.Red;
             this.deleteDocBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteDocBtn.Location = new System.Drawing.Point(336, 320);
             this.deleteDocBtn.Name = "deleteDocBtn";
             this.deleteDocBtn.Size = new System.Drawing.Size(126, 46);
             this.deleteDocBtn.TabIndex = 17;
             this.deleteDocBtn.Text = "Delete";
-            this.deleteDocBtn.UseVisualStyleBackColor = true;
+            this.deleteDocBtn.UseVisualStyleBackColor = false;
             this.deleteDocBtn.Click += new System.EventHandler(this.deleteDocBtn_Click);
             // 
             // updateDocBtn

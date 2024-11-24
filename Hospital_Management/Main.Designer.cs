@@ -121,6 +121,7 @@
             this.appointmentBtn.TabIndex = 4;
             this.appointmentBtn.Text = "Appointment";
             this.appointmentBtn.UseVisualStyleBackColor = true;
+            this.appointmentBtn.Click += new System.EventHandler(this.appointmentBtn_Click);
             // 
             // nurseBtn
             // 

@@ -133,7 +133,7 @@ namespace Hospital_Management
             if (int.TryParse(doctorIdTb.Text, out doctorId))
             {
                 // Proceed if the DoctorsID is valid
-                string checkQuery = "SELECT COUNT(*) FROM doctors WHERE doctorId = @doctorIdTb";
+                string checkQuery = "SELECT COUNT(*) FROM doctors WHERE doctorId = @doctorId";
 
                 DatabaseConnection dbConnection = new DatabaseConnection();
                 using (SqlConnection conn = dbConnection.GetConnection())

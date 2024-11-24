@@ -41,5 +41,12 @@ namespace Hospital_Management
             Nurses NursesForm = new Nurses();
             NursesForm.Show();
         }
+
+        private void appointmentBtn_Click(object sender, EventArgs e)
+        {
+            // Show the Appointment form
+            AppointmentForm AppointmentForm = new AppointmentForm();
+            AppointmentForm.Show();
+        }
     }
 }
