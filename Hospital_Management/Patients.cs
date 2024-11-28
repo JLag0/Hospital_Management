@@ -51,7 +51,7 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after insert
-            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+            string customQuery = "SELECT patientsId AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
             DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
 
 
@@ -130,7 +130,7 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after update
-            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+            string customQuery = "SELECT patientsId AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
             DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
 
             MessageBox.Show("Record updated successfully!");
@@ -170,7 +170,7 @@ namespace Hospital_Management
                                 deleteCmd.ExecuteNonQuery();
                             }
                             // Refresh the DataGridView after update
-                            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+                            string customQuery = "SELECT patientsId AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
                             DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
 
                             MessageBox.Show("Record Deleted Successfully");
@@ -195,7 +195,7 @@ namespace Hospital_Management
         // if the Patients Form loads this will exec
         private void Patients_Load(object sender, EventArgs e)
         {
-            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+            string customQuery = "SELECT patientsId AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
             DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
 
             DatabaseConnection dbConnection = new DatabaseConnection();
