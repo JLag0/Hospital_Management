@@ -47,7 +47,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after insert
-            DataGridRefresher.RefreshDataGrid(nurGridView, "nurses");
+            string customQuery = "SELECT nursesId AS [Nurse ID], nursesName AS [Nurse Name], phone AS [Phone], department AS [Department] FROM nurses";
+            DataGridRefresher.RefreshDataGrid(nurGridView, customQuery);
 
             MessageBox.Show("Record Inserted Successfully");
 
@@ -108,7 +109,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after update
-            DataGridRefresher.RefreshDataGrid(nurGridView, "nurses");
+            string customQuery = "SELECT nursesId AS [Nurse ID], nursesName AS [Nurse Name], phone AS [Phone], department AS [Department] FROM nurses";
+            DataGridRefresher.RefreshDataGrid(nurGridView, customQuery);
 
             MessageBox.Show("Record updated successfully!");
         }
@@ -149,7 +151,8 @@ namespace Hospital_Management
                             MessageBox.Show("Record Deleted Successfully");
 
                             // Refresh the DataGridView after delete
-                            DataGridRefresher.RefreshDataGrid(nurGridView, "nurses");
+                            string customQuery = "SELECT nursesId AS [Nurse ID], nursesName AS [Nurse Name], phone AS [Phone], department AS [Department] FROM nurses";
+                            DataGridRefresher.RefreshDataGrid(nurGridView, customQuery);
                         }
                         else
                         {
@@ -167,13 +170,14 @@ namespace Hospital_Management
 
         private void Nurses_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM nurses";
+            string customQuery = "SELECT nursesId AS [Nurse ID], nursesName AS [Nurse Name], phone AS [Phone], department AS [Department] FROM nurses";
+            DataGridRefresher.RefreshDataGrid(nurGridView, customQuery);
 
             DatabaseConnection dbConnection = new DatabaseConnection();
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(customQuery, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {

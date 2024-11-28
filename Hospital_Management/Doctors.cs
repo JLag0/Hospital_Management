@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
+using System.Net.NetworkInformation;
 
 namespace Hospital_Management
 {
@@ -50,8 +51,9 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after insert
-            DataGridRefresher.RefreshDataGrid(docGridView, "doctors");
 
+            string customQuery = "SELECT doctorId AS [Doctor ID], docName AS [Doctor Name], docPhone AS [Phone], docSpeciality AS [Speciality], docDepartment AS [Department] FROM doctors";
+            DataGridRefresher.RefreshDataGrid(docGridView, customQuery);
             MessageBox.Show("Record Inserted Successfully");
 
         }
@@ -118,7 +120,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after update
-            DataGridRefresher.RefreshDataGrid(docGridView, "doctors");
+            string customQuery = "SELECT doctorId AS [Doctor ID], docName AS [Doctor Name], docPhone AS [Phone], docSpeciality AS [Speciality], docDepartment AS [Department] FROM doctors";
+            DataGridRefresher.RefreshDataGrid(docGridView, customQuery);
 
             MessageBox.Show("Record updated successfully!");
         }
@@ -160,7 +163,8 @@ namespace Hospital_Management
                             MessageBox.Show("Record Deleted Successfully");
 
                             // Refresh the DataGridView after delete
-                            DataGridRefresher.RefreshDataGrid(docGridView, "doctors");
+                            string customQuery = "SELECT doctorId AS [Doctor ID], docName AS [Doctor Name], docPhone AS [Phone], docSpeciality AS [Speciality], docDepartment AS [Department] FROM doctors";
+                            DataGridRefresher.RefreshDataGrid(docGridView, customQuery);
                         }
                         else
                         {
@@ -178,13 +182,14 @@ namespace Hospital_Management
 
         private void Doctors_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM doctors";
+            string customQuery = "SELECT doctorId AS [Doctor ID], docName AS [Doctor Name], docPhone AS [Phone], docSpeciality AS [Speciality], docDepartment AS [Department] FROM doctors";
+            DataGridRefresher.RefreshDataGrid(docGridView, customQuery);
 
             DatabaseConnection dbConnection = new DatabaseConnection();
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(customQuery, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {

@@ -51,7 +51,9 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after insert
-            DataGridRefresher.RefreshDataGrid(medRecGridView, "medicalRecord");
+            
+            string customQuery = "SELECT medicalRecId AS [Medical Record ID], medRecDoctorName AS [Doctor Name], medRecNurName AS [Nurse Name], medRecDiagnosis AS [Diagnosis], medRecPres AS [Prescription]  FROM medicalRecord";
+            DataGridRefresher.RefreshDataGrid(medRecGridView, customQuery);
 
             MessageBox.Show("Record Inserted Successfully");
 
@@ -133,7 +135,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after update
-            DataGridRefresher.RefreshDataGrid(medRecGridView, "medicalRecord");
+            string customQuery = "SELECT medicalRecId AS [Medical Record ID], medRecDoctorName AS [Doctor Name], medRecNurName AS [Nurse Name], medRecDiagnosis AS [Diagnosis], medRecPres AS [Prescription]  FROM medicalRecord";
+            DataGridRefresher.RefreshDataGrid(medRecGridView, customQuery);
 
             MessageBox.Show("Record updated successfully!");
         }
@@ -174,7 +177,8 @@ namespace Hospital_Management
                             MessageBox.Show("Record Deleted Successfully");
 
                             // Refresh the DataGridView after delete
-                            DataGridRefresher.RefreshDataGrid(medRecGridView, "medicalRecord");
+                            string customQuery = "SELECT medicalRecId AS [Medical Record ID], medRecDoctorName AS [Doctor Name], medRecNurName AS [Nurse Name], medRecDiagnosis AS [Diagnosis], medRecPres AS [Prescription]  FROM medicalRecord";
+                            DataGridRefresher.RefreshDataGrid(medRecGridView, customQuery);
                         }
                         else
                         {
@@ -191,13 +195,14 @@ namespace Hospital_Management
         }
         private void MedicalRecord_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM medicalRecord";
+            string customQuery = "SELECT medicalRecId AS [Medical Record ID], medRecDoctorName AS [Doctor Name], medRecNurName AS [Nurse Name], medRecDiagnosis AS [Diagnosis], medRecPres AS [Prescription]  FROM medicalRecord";
+            DataGridRefresher.RefreshDataGrid(medRecGridView, customQuery);
 
             DatabaseConnection dbConnection = new DatabaseConnection();
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(customQuery, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {

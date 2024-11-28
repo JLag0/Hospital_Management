@@ -49,7 +49,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after insert
-            DataGridRefresher.RefreshDataGrid(appGridView, "appointment");
+            string customQuery = "SELECT appointmentId AS [Appointment ID], patientName AS [Patient Name], doctorName AS [Doctor Name], dateCreated AS [Date Created], appstatus AS [Status] FROM appointment";
+            DataGridRefresher.RefreshDataGrid(appGridView, customQuery);
 
             MessageBox.Show("Record Inserted Successfully");
 
@@ -117,7 +118,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after update
-            DataGridRefresher.RefreshDataGrid(appGridView, "appointment");
+            string customQuery = "SELECT appointmentId AS [Appointment ID], patientName AS [Patient Name], doctorName AS [Doctor Name], dateCreated AS [Date Created], appstatus AS [Status] FROM appointment";
+            DataGridRefresher.RefreshDataGrid(appGridView, customQuery);
 
             MessageBox.Show("Record updated successfully!");
         }
@@ -158,7 +160,8 @@ namespace Hospital_Management
                             MessageBox.Show("Record Deleted Successfully");
 
                             // Refresh the DataGridView after delete
-                            DataGridRefresher.RefreshDataGrid(appGridView, "appointment");
+                            string customQuery = "SELECT appointmentId AS [Appointment ID], patientName AS [Patient Name], doctorName AS [Doctor Name], dateCreated AS [Date Created], appstatus AS [Status] FROM appointment";
+                            DataGridRefresher.RefreshDataGrid(appGridView, customQuery);
                         }
                         else
                         {
@@ -176,13 +179,14 @@ namespace Hospital_Management
 
         private void Appointment_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM appointment";
+            string customQuery = "SELECT appointmentId AS [Appointment ID], patientName AS [Patient Name], doctorName AS [Doctor Name], dateCreated AS [Date Created], appstatus AS [Status] FROM appointment";
+            DataGridRefresher.RefreshDataGrid(appGridView, customQuery);
 
             DatabaseConnection dbConnection = new DatabaseConnection();
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(customQuery, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {

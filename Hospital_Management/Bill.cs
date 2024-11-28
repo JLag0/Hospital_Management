@@ -48,7 +48,9 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after insert
-            DataGridRefresher.RefreshDataGrid(billGridView, "bill");
+            
+            string customQuery = "SELECT billId AS [Bill ID], patientName AS [Patient Name], amount AS [Amount], billStatus AS [Bill Status] FROM bill";
+            DataGridRefresher.RefreshDataGrid(billGridView, customQuery);
 
             MessageBox.Show("Record Inserted Successfully");
 
@@ -111,7 +113,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after update
-            DataGridRefresher.RefreshDataGrid(billGridView, "bill");
+            string customQuery = "SELECT billId AS [Bill ID], patientName AS [Patient Name], amount AS [Amount], billStatus AS [Bill Status] FROM bill";
+            DataGridRefresher.RefreshDataGrid(billGridView, customQuery);
 
             MessageBox.Show("Record updated successfully!");
         }
@@ -153,7 +156,8 @@ namespace Hospital_Management
                             MessageBox.Show("Record Deleted Successfully");
 
                             // Refresh the DataGridView after delete
-                            DataGridRefresher.RefreshDataGrid(billGridView, "bill");
+                            string customQuery = "SELECT billId AS [Bill ID], patientName AS [Patient Name], amount AS [Amount], billStatus AS [Bill Status] FROM bill";
+                            DataGridRefresher.RefreshDataGrid(billGridView, customQuery);
                         }
                         else
                         {
@@ -170,13 +174,14 @@ namespace Hospital_Management
         }
         private void BillForm_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM bill";
+            string customQuery = "SELECT billId AS [Bill ID], patientName AS [Patient Name], amount AS [Amount], billStatus AS [Bill Status] FROM bill";
+            DataGridRefresher.RefreshDataGrid(billGridView, customQuery);
 
             DatabaseConnection dbConnection = new DatabaseConnection();
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(customQuery, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {

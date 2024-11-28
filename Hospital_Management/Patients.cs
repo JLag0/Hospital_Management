@@ -51,7 +51,9 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after insert
-            DataGridRefresher.RefreshDataGrid(patGridView, "patients");
+            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+            DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
+
 
             MessageBox.Show("Record Inserted Successfully");
 
@@ -128,7 +130,8 @@ namespace Hospital_Management
                 }
             }
             // Refresh the DataGridView after update
-            DataGridRefresher.RefreshDataGrid(patGridView, "patients");
+            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+            DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
 
             MessageBox.Show("Record updated successfully!");
         }
@@ -167,7 +170,8 @@ namespace Hospital_Management
                                 deleteCmd.ExecuteNonQuery();
                             }
                             // Refresh the DataGridView after update
-                            DataGridRefresher.RefreshDataGrid(patGridView, "patients");
+                            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+                            DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
 
                             MessageBox.Show("Record Deleted Successfully");
                         }
@@ -191,13 +195,14 @@ namespace Hospital_Management
         // if the Patients Form loads this will exec
         private void Patients_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM patients";  
+            string customQuery = "SELECT patientID AS [Patient ID], patientsName AS [Patient Name], age AS [Age], gender AS [Gender], adress AS [Address] FROM patients";
+            DataGridRefresher.RefreshDataGrid(patGridView, customQuery);
 
             DatabaseConnection dbConnection = new DatabaseConnection();
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(customQuery, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {

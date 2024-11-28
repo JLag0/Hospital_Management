@@ -49,7 +49,6 @@
             this.deleteMRBtn = new System.Windows.Forms.Button();
             this.updateMRBtn = new System.Windows.Forms.Button();
             this.insertMRBtn = new System.Windows.Forms.Button();
-            this.mrRetButton = new System.Windows.Forms.Button();
             this.topPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.medRecGridView)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +66,6 @@
             // topPnl
             // 
             this.topPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(219)))), ((int)(((byte)(34)))));
-            this.topPnl.Controls.Add(this.mrRetButton);
             this.topPnl.Controls.Add(this.labelMedicalRecord);
             this.topPnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPnl.Location = new System.Drawing.Point(0, 0);
@@ -244,18 +242,6 @@
             this.insertMRBtn.UseVisualStyleBackColor = true;
             this.insertMRBtn.Click += new System.EventHandler(this.insertMRBtn_Click);
             // 
-            // mrRetButton
-            // 
-            this.mrRetButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mrRetButton.BackgroundImage")));
-            this.mrRetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.mrRetButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.mrRetButton.Location = new System.Drawing.Point(-1, -1);
-            this.mrRetButton.Name = "mrRetButton";
-            this.mrRetButton.Size = new System.Drawing.Size(75, 61);
-            this.mrRetButton.TabIndex = 1;
-            this.mrRetButton.UseVisualStyleBackColor = true;
-            this.mrRetButton.Click += new System.EventHandler(this.mrRetButton_Click);
-            // 
             // MedicalRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,6 +302,5 @@
         private System.Windows.Forms.Button deleteMRBtn;
         private System.Windows.Forms.Button updateMRBtn;
         private System.Windows.Forms.Button insertMRBtn;
-        private System.Windows.Forms.Button mrRetButton;
     }
 }
