@@ -91,6 +91,7 @@
             this.medicalRecordBtn.TabIndex = 7;
             this.medicalRecordBtn.Text = "Medical Record";
             this.medicalRecordBtn.UseVisualStyleBackColor = true;
+            this.medicalRecordBtn.Click += new System.EventHandler(this.medicalRecordBtn_Click);
             // 
             // dashboardBtn
             // 
@@ -101,6 +102,7 @@
             this.dashboardBtn.TabIndex = 6;
             this.dashboardBtn.Text = "Dashboard";
             this.dashboardBtn.UseVisualStyleBackColor = true;
+            this.dashboardBtn.Click += new System.EventHandler(this.dashboardBtn_Click);
             // 
             // billBtn
             // 
@@ -111,6 +113,7 @@
             this.billBtn.TabIndex = 5;
             this.billBtn.Text = "Bill";
             this.billBtn.UseVisualStyleBackColor = true;
+            this.billBtn.Click += new System.EventHandler(this.billBtn_Click);
             // 
             // appointmentBtn
             // 

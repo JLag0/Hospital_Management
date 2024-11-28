@@ -185,13 +185,14 @@
             // deleteBtn
             // 
             this.deleteBtn.AccessibleRole = System.Windows.Forms.AccessibleRole.SplitButton;
+            this.deleteBtn.BackColor = System.Drawing.Color.Red;
             this.deleteBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.Location = new System.Drawing.Point(334, 321);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(126, 46);
             this.deleteBtn.TabIndex = 14;
             this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.UseVisualStyleBackColor = false;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // patGridView

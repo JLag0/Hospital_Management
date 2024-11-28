@@ -41,9 +41,9 @@
             this.phoneLbl = new System.Windows.Forms.Label();
             this.departmentTb = new System.Windows.Forms.TextBox();
             this.departmentLbl = new System.Windows.Forms.Label();
-            this.deleteDocBtn = new System.Windows.Forms.Button();
-            this.updateDocBtn = new System.Windows.Forms.Button();
-            this.insertDocBtn = new System.Windows.Forms.Button();
+            this.deleteBillBtn = new System.Windows.Forms.Button();
+            this.updateBillBtn = new System.Windows.Forms.Button();
+            this.insertBillBtn = new System.Windows.Forms.Button();
             this.docGridView = new System.Windows.Forms.DataGridView();
             this.topPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.docGridView)).BeginInit();
@@ -159,39 +159,39 @@
             this.departmentLbl.TabIndex = 12;
             this.departmentLbl.Text = "Department";
             // 
-            // deleteDocBtn
+            // deleteBillBtn
             // 
-            this.deleteDocBtn.BackColor = System.Drawing.Color.Red;
-            this.deleteDocBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteDocBtn.Location = new System.Drawing.Point(336, 320);
-            this.deleteDocBtn.Name = "deleteDocBtn";
-            this.deleteDocBtn.Size = new System.Drawing.Size(126, 46);
-            this.deleteDocBtn.TabIndex = 17;
-            this.deleteDocBtn.Text = "Delete";
-            this.deleteDocBtn.UseVisualStyleBackColor = false;
-            this.deleteDocBtn.Click += new System.EventHandler(this.deleteDocBtn_Click);
+            this.deleteBillBtn.BackColor = System.Drawing.Color.Red;
+            this.deleteBillBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteBillBtn.Location = new System.Drawing.Point(336, 320);
+            this.deleteBillBtn.Name = "deleteBillBtn";
+            this.deleteBillBtn.Size = new System.Drawing.Size(126, 46);
+            this.deleteBillBtn.TabIndex = 17;
+            this.deleteBillBtn.Text = "Delete";
+            this.deleteBillBtn.UseVisualStyleBackColor = false;
+            this.deleteBillBtn.Click += new System.EventHandler(this.deleteDocBtn_Click);
             // 
-            // updateDocBtn
+            // updateBillBtn
             // 
-            this.updateDocBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateDocBtn.Location = new System.Drawing.Point(188, 320);
-            this.updateDocBtn.Name = "updateDocBtn";
-            this.updateDocBtn.Size = new System.Drawing.Size(126, 46);
-            this.updateDocBtn.TabIndex = 16;
-            this.updateDocBtn.Text = "Update";
-            this.updateDocBtn.UseVisualStyleBackColor = true;
-            this.updateDocBtn.Click += new System.EventHandler(this.updateDocBtn_Click);
+            this.updateBillBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateBillBtn.Location = new System.Drawing.Point(188, 320);
+            this.updateBillBtn.Name = "updateBillBtn";
+            this.updateBillBtn.Size = new System.Drawing.Size(126, 46);
+            this.updateBillBtn.TabIndex = 16;
+            this.updateBillBtn.Text = "Update";
+            this.updateBillBtn.UseVisualStyleBackColor = true;
+            this.updateBillBtn.Click += new System.EventHandler(this.updateDocBtn_Click);
             // 
-            // insertDocBtn
+            // insertBillBtn
             // 
-            this.insertDocBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insertDocBtn.Location = new System.Drawing.Point(40, 320);
-            this.insertDocBtn.Name = "insertDocBtn";
-            this.insertDocBtn.Size = new System.Drawing.Size(126, 46);
-            this.insertDocBtn.TabIndex = 15;
-            this.insertDocBtn.Text = "Insert";
-            this.insertDocBtn.UseVisualStyleBackColor = true;
-            this.insertDocBtn.Click += new System.EventHandler(this.insertDocBtn_Click);
+            this.insertBillBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insertBillBtn.Location = new System.Drawing.Point(40, 320);
+            this.insertBillBtn.Name = "insertBillBtn";
+            this.insertBillBtn.Size = new System.Drawing.Size(126, 46);
+            this.insertBillBtn.TabIndex = 15;
+            this.insertBillBtn.Text = "Insert";
+            this.insertBillBtn.UseVisualStyleBackColor = true;
+            this.insertBillBtn.Click += new System.EventHandler(this.insertDocBtn_Click);
             // 
             // docGridView
             // 
@@ -209,9 +209,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(657, 546);
             this.Controls.Add(this.docGridView);
-            this.Controls.Add(this.deleteDocBtn);
-            this.Controls.Add(this.updateDocBtn);
-            this.Controls.Add(this.insertDocBtn);
+            this.Controls.Add(this.deleteBillBtn);
+            this.Controls.Add(this.updateBillBtn);
+            this.Controls.Add(this.insertBillBtn);
             this.Controls.Add(this.departmentTb);
             this.Controls.Add(this.departmentLbl);
             this.Controls.Add(this.docPhoneTb);
@@ -250,9 +250,9 @@
         private System.Windows.Forms.Label phoneLbl;
         private System.Windows.Forms.TextBox departmentTb;
         private System.Windows.Forms.Label departmentLbl;
-        private System.Windows.Forms.Button deleteDocBtn;
-        private System.Windows.Forms.Button updateDocBtn;
-        private System.Windows.Forms.Button insertDocBtn;
+        private System.Windows.Forms.Button deleteBillBtn;
+        private System.Windows.Forms.Button updateBillBtn;
+        private System.Windows.Forms.Button insertBillBtn;
         private System.Windows.Forms.DataGridView docGridView;
     }
 }

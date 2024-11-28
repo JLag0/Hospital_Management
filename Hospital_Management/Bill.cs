@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Hospital_Management
 {
-    public partial class Doctors : Form
+    public partial class BillForm : Form
     {
-        public Doctors()
+        public BillForm()
         {
             InitializeComponent();
         }
@@ -22,15 +21,15 @@ namespace Hospital_Management
         private void insertDocBtn_Click(object sender, EventArgs e)
         {
             // Collect input from the textboxes
-            string docName = doctorNameTb.Text;
-            string docSpeciality = specialityTb.Text;
-            int docPhone = int.Parse(docPhoneTb.Text);
-            string docDepartment = departmentTb.Text;
-           
+            string patientName = patNameTb.Text;
+            string amount = amountTb.Text;
+            string billStatus = statusTb.Text;
+            
 
 
-            string query = "INSERT INTO doctors (docName, docSpeciality, docPhone, docDepartment) " +
-                           "VALUES (@docName, @docSpeciality, @docPhone, @docDepartment)";
+
+            string query = "INSERT INTO bill (patientName, amount, billStatus) " +
+                           "VALUES (@patientName, @amount, @billStatus)";
 
             // Set up the database connection and execute the query
             DatabaseConnection dbConnection = new DatabaseConnection();
@@ -40,17 +39,16 @@ namespace Hospital_Management
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     // Add parameters for the other columns
-                    cmd.Parameters.AddWithValue("@docName", docName);
-                    cmd.Parameters.AddWithValue("@docPhone", docPhone);
-                    cmd.Parameters.AddWithValue("@docSpeciality", docSpeciality);
-                    cmd.Parameters.AddWithValue("@docDepartment", docDepartment);
+                    cmd.Parameters.AddWithValue("@patientName", patientName);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.Parameters.AddWithValue("@billStatus", billStatus);
 
                     // Execute the query
                     cmd.ExecuteNonQuery();
                 }
             }
             // Refresh the DataGridView after insert
-            DataGridRefresher.RefreshDataGrid(docGridView, "doctors");
+            DataGridRefresher.RefreshDataGrid(billGridView, "bill");
 
             MessageBox.Show("Record Inserted Successfully");
 
@@ -59,30 +57,26 @@ namespace Hospital_Management
         private void updateDocBtn_Click(object sender, EventArgs e)
         {
             // Get values from textboxes
-            int doctorId = int.Parse(doctorIdTb.Text); // Assuming this textbox always has the doctor's ID to update
-            string docName = doctorNameTb.Text;
-            string docSpeciality = specialityTb.Text;
-            string docPhone = docPhoneTb.Text;
-            string docDepartment = departmentTb.Text;
+            int billId = int.Parse(billIdTb.Text); // Assuming this textbox always has the doctor's ID to update
+            string patientName = patNameTb.Text;
+            string amount = amountTb.Text;
+            string billStatus = statusTb.Text;
 
             // Build the dynamic query based on which fields are filled
             List<string> updates = new List<string>();
-            if (!string.IsNullOrEmpty(docName))
+            if (!string.IsNullOrEmpty(patientName))
             {
-                updates.Add("docName = @docName");
+                updates.Add("patientName = @patientName");
             }
-            if (!string.IsNullOrEmpty(docSpeciality))
+            if (!string.IsNullOrEmpty(amount))
             {
-                updates.Add("docSpeciality = @docSpeciality");
+                updates.Add("amount = @amount");
             }
-            if (!string.IsNullOrEmpty(docPhone))
+            if (!string.IsNullOrEmpty(billStatus))
             {
-                updates.Add("docPhone = @docPhone");
+                updates.Add("billStatus = @billStatus");
             }
-            if (!string.IsNullOrEmpty(docDepartment))
-            {
-                updates.Add("docDepartment = @docDepartment");
-            }
+            
 
             if (updates.Count == 0)
             {
@@ -91,7 +85,7 @@ namespace Hospital_Management
             }
 
             // Join the updates for the SQL query
-            string updateQuery = $"UPDATE doctors SET {string.Join(", ", updates)} WHERE doctorId = @doctorId";
+            string updateQuery = $"UPDATE bill SET {string.Join(", ", updates)} WHERE billId = @billId";
 
             // Execute the update query
             DatabaseConnection dbConnection = new DatabaseConnection();
@@ -101,24 +95,23 @@ namespace Hospital_Management
                 using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
                 {
                     // Add parameters for non-empty textboxes
-                    if (!string.IsNullOrEmpty(docName))
-                        cmd.Parameters.AddWithValue("@docName", docName);
-                    if (!string.IsNullOrEmpty(docSpeciality))
-                        cmd.Parameters.AddWithValue("@docSpeciality", docSpeciality);
-                    if (!string.IsNullOrEmpty(docPhone))
-                        cmd.Parameters.AddWithValue("@docPhone", docPhone);
-                    if (!string.IsNullOrEmpty(docDepartment))
-                        cmd.Parameters.AddWithValue("@docDepartment", docDepartment);
+                    if (!string.IsNullOrEmpty(patientName))
+                        cmd.Parameters.AddWithValue("@patientName", patientName);
+                    if (!string.IsNullOrEmpty(amount))
+                        cmd.Parameters.AddWithValue("@amount", amount);
+                    if (!string.IsNullOrEmpty(billStatus))
+                        cmd.Parameters.AddWithValue("@billStatus", billStatus);
+                    
 
                     // Add the doctorId parameter
-                    cmd.Parameters.AddWithValue("@doctorId", doctorId);
+                    cmd.Parameters.AddWithValue("@billId", billId);
 
                     // Execute the command
                     cmd.ExecuteNonQuery();
                 }
             }
             // Refresh the DataGridView after update
-            DataGridRefresher.RefreshDataGrid(docGridView, "doctors");
+            DataGridRefresher.RefreshDataGrid(billGridView, "bill");
 
             MessageBox.Show("Record updated successfully!");
         }
@@ -127,13 +120,13 @@ namespace Hospital_Management
         private void deleteDocBtn_Click(object sender, EventArgs e)
         {
             // Initialize DoctorsID as 0 or a default value
-            int doctorId;
+            int billId;
 
             // Check if the input value is a valid integer
-            if (int.TryParse(doctorIdTb.Text, out doctorId))
+            if (int.TryParse(billIdTb.Text, out billId))
             {
                 // Proceed if the DoctorsID is valid
-                string checkQuery = "SELECT COUNT(*) FROM doctors WHERE doctorId = @doctorId";
+                string checkQuery = "SELECT COUNT(*) FROM bill WHERE billId = @billId";
 
                 DatabaseConnection dbConnection = new DatabaseConnection();
                 using (SqlConnection conn = dbConnection.GetConnection())
@@ -141,7 +134,7 @@ namespace Hospital_Management
                     conn.Open();
                     using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                     {
-                        checkCmd.Parameters.AddWithValue("@doctorId", doctorIdTb);
+                        checkCmd.Parameters.AddWithValue("@billId", billId);
 
                         // Execute scalar to count if the patient ID exists
                         int count = (int)checkCmd.ExecuteScalar();
@@ -149,22 +142,22 @@ namespace Hospital_Management
                         // If the record exists, proceed with deletion
                         if (count > 0)
                         {
-                            string deleteQuery = "DELETE FROM doctors WHERE doctorId = @doctorId";
+                            string deleteQuery = "DELETE FROM bill WHERE billId = @billId";
 
                             using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
                             {
-                                deleteCmd.Parameters.AddWithValue("@doctorId", doctorId);
+                                deleteCmd.Parameters.AddWithValue("@billId", billId);
                                 deleteCmd.ExecuteNonQuery();
                             }
 
                             MessageBox.Show("Record Deleted Successfully");
 
                             // Refresh the DataGridView after delete
-                            DataGridRefresher.RefreshDataGrid(docGridView, "doctors");
+                            DataGridRefresher.RefreshDataGrid(billGridView, "bill");
                         }
                         else
                         {
-                            MessageBox.Show("No record found with this Doctor ID.");
+                            MessageBox.Show("No record found with this Bill ID.");
                         }
                     }
                 }
@@ -172,13 +165,12 @@ namespace Hospital_Management
             else
             {
                 // If input is invalid, show a message to the user
-                MessageBox.Show("Invalid Doctors ID. Please enter a valid number.");
+                MessageBox.Show("Invalid Bill ID. Please enter a valid number.");
             }
         }
-
-        private void Doctors_Load(object sender, EventArgs e)
+        private void BillForm_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM doctors";
+            string query = "SELECT * FROM bill";
 
             DatabaseConnection dbConnection = new DatabaseConnection();
             using (SqlConnection conn = dbConnection.GetConnection())
@@ -190,12 +182,10 @@ namespace Hospital_Management
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        docGridView.DataSource = dataTable;
+                        billGridView.DataSource = dataTable;
                     }
                 }
             }
         }
-
-        
     }
 }

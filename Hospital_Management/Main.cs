@@ -48,5 +48,26 @@ namespace Hospital_Management
             AppointmentForm AppointmentForm = new AppointmentForm();
             AppointmentForm.Show();
         }
+
+        private void medicalRecordBtn_Click(object sender, EventArgs e)
+        {
+            // Show the Medical Record form
+            MedicalRecord MedicalRecordForm = new MedicalRecord();
+            MedicalRecordForm.Show();
+        }
+
+        private void billBtn_Click(object sender, EventArgs e)
+        {
+            // Show the Bill form
+            BillForm BillForm = new BillForm();
+            BillForm.Show();
+        }
+
+        private void dashboardBtn_Click(object sender, EventArgs e)
+        {
+            // Show the Dashboard form
+            Dashboard DashboardForm = new Dashboard();
+            DashboardForm.Show();
+        }
     }
 }
